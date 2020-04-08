@@ -32,12 +32,14 @@ import HomeKit
 class HomeViewController: BaseCollectionViewController {
   var homes: [HMHome] = []
   
-  // 1. Add the homeManager
+  // Add the homeManager
+  let homeManager = HMHomeManager()
   
   required init?(coder aDecoder: NSCoder) {
     super.init(coder: aDecoder)
     
-    // 3. Add HomeViewController as delegate to homeManager
+    // Add HomeViewController as delegate to homeManager
+    homeManager.delegate = self
   }
   
   override func viewDidLoad() {
@@ -46,7 +48,8 @@ class HomeViewController: BaseCollectionViewController {
     title = "Homes"
     navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(newHome(sender:)))
     
-    // 2. Add homes from homeManager
+    // Add homes from homeManager
+    addHomes(homeManager.homes)
     
     collectionView?.reloadData()
   }
@@ -72,7 +75,32 @@ class HomeViewController: BaseCollectionViewController {
   
   @objc func newHome(sender: UIBarButtonItem) {
     showInputDialog { homeName, roomName in
-      // 5. Add new Home + Room
+      // Add new Home + Room
+      // Call addHome(withName:completionHandler:) passing in the name of the home.
+      self.homeManager.addHome(withName: homeName) { [weak self] home, error in
+        guard let self = self else {
+          return
+        }
+
+        // Verify there was no error while adding the home. If there was an error, simply print it out.
+        if let error = error {
+          print("Failed to add home: \(error.localizedDescription)")
+        }
+
+        // If you successfully created an HMHome, add a room to it using the name entered in the dialog.
+        if let discoveredHome = home {
+          discoveredHome.addRoom(withName: roomName) { _, error  in
+
+            // If you successfully added a room, add the newly created home to the homes array and refresh the collection view.
+            if let error = error {
+              print("Failed to add room: \(error.localizedDescription)")
+            } else {
+              self.homes.append(discoveredHome)
+              self.collectionView?.reloadData()
+            }
+          }
+        }
+      }
     }
   }
   
@@ -114,5 +142,10 @@ class HomeViewController: BaseCollectionViewController {
   }
 }
 
-// 4. Implement HMHomeManagerDelegate as extension on HomeViewController
+// Implement HMHomeManagerDelegate as extension on HomeViewController
+extension HomeViewController: HMHomeManagerDelegate {
+  func homeManagerDidUpdateHomes(_ manager: HMHomeManager) {
+    addHomes(manager.homes)
+  }
+}
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1E479624243E6CB600A24DEC /* HomeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E479623243E6CB600A24DEC /* HomeKit.framework */; };
 		4227F38C208FA04F002C55F6 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227F38B208FA04F002C55F6 /* HomeCell.swift */; };
 		4227F38E208FA106002C55F6 /* AccessoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4227F38D208FA106002C55F6 /* AccessoryCell.swift */; };
 		42EF771E206434E6000BD17B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42EF771D206434E6000BD17B /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E479623243E6CB600A24DEC /* HomeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = HomeKit.framework; path = System/Library/Frameworks/HomeKit.framework; sourceTree = SDKROOT; };
 		4227F38B208FA04F002C55F6 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		4227F38D208FA106002C55F6 /* AccessoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryCell.swift; sourceTree = "<group>"; };
 		42EF771A206434E6000BD17B /* LightSwitch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LightSwitch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -38,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E479624243E6CB600A24DEC /* HomeKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +87,7 @@
 		42EF7734206435E0000BD17B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E479623243E6CB600A24DEC /* HomeKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -312,11 +316,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LightSwitch/LightSwitch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = LightSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.LightSwitch;
+				PRODUCT_BUNDLE_IDENTIFIER = PTL.LightSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -327,11 +332,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = LightSwitch/LightSwitch.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = X54K5PJVGU;
 				INFOPLIST_FILE = LightSwitch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.raywenderlich.LightSwitch;
+				PRODUCT_BUNDLE_IDENTIFIER = PTL.LightSwitch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -41,5 +41,7 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSHomeKitUsageDescription</key>
+	<string>This app lets you control your lightbulb.</string>
 </dict>
 </plist>
